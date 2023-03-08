@@ -2,6 +2,7 @@ const canvas = document.querySelector(".main-canvas");
 const ctx = canvas.getContext('2d');
 const pixels = 20;
 const snakePadding = 5;
+console.log(canvas.height);
 class Game{
     init(){
         this.snake = new Snake(0, 0, canvas.width / pixels);
@@ -30,14 +31,15 @@ class Game{
     
     checkHitWall(){
         let firstBlock = this.snake.tail[this.snake.tail.length - 1];
+        console.log(firstBlock);
         if (firstBlock.x == -this.snake.size){
             firstBlock.x = canvas.width;
-        }else if (firstBlock.x == canvas.width){
+        }else if (firstBlock.x >= canvas.width){
             firstBlock.x = 0;
         };
         if (firstBlock.y == -this.snake.size){
             firstBlock.y = canvas.height;
-        }else if (firstBlock.y == canvas.height){
+        }else if (firstBlock.y >= canvas.height){
             firstBlock.y = 0;
         };
     };
